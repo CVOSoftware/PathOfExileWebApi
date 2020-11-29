@@ -5,13 +5,13 @@ namespace PathOfExileWebApi.Clients
 {
     public abstract class ApiClient
     {
-        protected ApiClient(IConnector apiConnector)
+        protected ApiClient(IConnector connector)
         {
-            Ensure.ArgumentNullException(apiConnector, nameof(apiConnector));
+            Ensure.ArgumentNullException(connector, nameof(connector));
 
-            ApiConnector = apiConnector;
+            _connector = connector;
         }
 
-        protected IConnector ApiConnector { get; }
+        protected IConnector _connector { get; }
     }
 }

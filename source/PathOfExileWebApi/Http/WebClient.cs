@@ -29,13 +29,13 @@ namespace PathOfExileWebApi.Http
 
         public async Task<IResponse> DoRequest(IRequest request)
         {
-            using var requestMessage = BuildRequest(request);
-            var responseMessage = await _httpClient
-                .SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead)
-                .ConfigureAwait(false);
-            var response = await BuildResponse(responseMessage).ConfigureAwait(false);
+            using(var requestMessage = BuildRequest(request))
+            {
+                var responseMessage = await _httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead).ConfigureAwait(false);
+                var response = await BuildResponse(responseMessage).ConfigureAwait(false);
 
-            return response;
+                return response;
+            }
         }
 
         #endregion

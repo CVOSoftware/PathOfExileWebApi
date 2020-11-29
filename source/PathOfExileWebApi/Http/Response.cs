@@ -22,7 +22,7 @@ namespace PathOfExileWebApi.Http
 
         public string ContentType { get; }
 
-        public object Body { get; }
+        public object Body { get; set; }
 
         public IReadOnlyDictionary<string, string> Headers { get; }
 
